@@ -12,3 +12,9 @@
 7. You will see the Apple ID that you entered into Cydia Impactor. Click on it and press "Trust".
 8. You can now use the app until it expires in 7 days. (if you want it to not expire, do this process again before the 7 days are up)
 
+## How to use other currencies
+1. Open the file `wallet-new/viewcontroller.swift`
+2. Find this line:<br />
+  `var currency:String = "KM"`
+3. Change KM to your preferred currency.
+4. Compile and run.
