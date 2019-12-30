@@ -103,6 +103,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // open setup if first time opening
         if (defaults.string(forKey: "hasFinishedSetup") != "yes") {
             setup()
         }
@@ -167,6 +168,7 @@ class ViewController: UIViewController {
                 monthlyExpense = 0
             }
             
+            // set values of labels
             moneyLeftValueLabel.text = String(round(currentBudget*100)/100) + " " + currency
             budgetViewLabelIncome.text = String(round(monthlyIncome*100)/100) + " " + currency
             budgetViewLabelExpenses.text = String(round(monthlyExpense*100)/100) + " " + currency
@@ -195,7 +197,7 @@ class ViewController: UIViewController {
         recentSpendingTableView.dataSource = self
         recentSpendingTableView.delegate = self
         
-        //KB
+        // Keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -230,6 +232,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        // hide nav bar
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
