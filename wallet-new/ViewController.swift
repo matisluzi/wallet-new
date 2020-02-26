@@ -327,7 +327,8 @@ class ViewController: UIViewController {
                 formatter.dateFormat = "MMM d, yyyy"
                 let tempDate = formatter.string(from: date)
                 let tempName = popUpField1.text
-                let tempAmount = popUpField2.text
+                let tempAmount = popUpField2.text?.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil)
+
                 //expense
                 if (addType == "expense") {
                     if (popUpField1.text == "") {
@@ -369,7 +370,7 @@ class ViewController: UIViewController {
                 self.refreshData()
             }
             else {
-                currentBudget = Double(popUpField2.text!)
+                currentBudget = Double(popUpField2.text!.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil))
                 defaults.set(round(currentBudget*100)/100, forKey: "currentBudget")
                 defaults.set("yes", forKey: "hasFinishedSetup")
                 monthlyExpense = 0
